@@ -55,6 +55,13 @@ $(function() {
         zoom: 13,
         zoomControl: true
     };
+    //added geolocation capabilities to the map!
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(initialLocation);
+        });
+    }
 
     // get DOM node in which map will be instantiated
     var canvas = $("#map-canvas").get(0);
@@ -109,7 +116,7 @@ function addMarker(place)
         toggleBounce();
         });
       
-       // setAllMap(map);
+       
  }
 
 /**
